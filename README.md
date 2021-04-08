@@ -1,2 +1,2 @@
 # job-management
-Repository for Jbb Mangement microservice
+Repository for Job Mangement microservice
