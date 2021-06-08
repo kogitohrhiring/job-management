@@ -1,4 +1,4 @@
-package org.kie.kogito.jobmanagement.dto;
+package org.kie.kogito.jobmanagement.dao;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

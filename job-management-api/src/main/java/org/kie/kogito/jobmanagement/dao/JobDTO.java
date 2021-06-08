@@ -1,4 +1,4 @@
-package org.kie.kogito.jobmanagement.dto;
+package org.kie.kogito.jobmanagement.dao;
 
 import java.util.Objects;
 

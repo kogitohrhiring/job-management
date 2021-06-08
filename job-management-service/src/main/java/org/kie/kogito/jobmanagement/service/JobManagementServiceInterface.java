@@ -1,9 +1,10 @@
 package org.kie.kogito.jobmanagement.service;
 
-import org.kie.kogito.jobmanagement.dto.Job;
+import org.kie.kogito.jobmanagement.dao.Application;
+import org.kie.kogito.jobmanagement.dao.ApplicationDTO;
+import org.kie.kogito.jobmanagement.dao.Job;
 
 import java.util.Collection;
-import java.util.List;
 
 public interface JobManagementServiceInterface {
 
@@ -12,4 +13,6 @@ public interface JobManagementServiceInterface {
     Collection<Job> GetAllJobs();
 
     void CreateJob(Job job);
+
+    void applyJob(Application application);
 }
