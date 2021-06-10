@@ -1,8 +1,8 @@
 package org.kie.kogito.jobmanagement.controller;
 
 import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
-import org.kie.kogito.jobmanagement.dao.ApplicationDTO;
-import org.kie.kogito.jobmanagement.dao.JobDTO;
+import org.kie.kogito.jobmanagement.dto.ApplicationDTO;
+import org.kie.kogito.jobmanagement.dto.JobDTO;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -13,7 +13,7 @@ import java.util.Collection;
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 @RegisterRestClient
-public interface JobManagementControllerInterface {
+public interface JobControllerInterface {
 
     @GET
     @Path("/job/{jobId}")
@@ -24,8 +24,4 @@ public interface JobManagementControllerInterface {
 
     @POST
     void CreateJob(JobDTO jobDTO);
-
-    @POST
-    @Path("/apply")
-    Response applyJob(ApplicationDTO applicationDTO);
 }

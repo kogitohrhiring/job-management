@@ -1,7 +1,7 @@
 package org.kie.kogito.jobmanagement.repository;
 
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
-import org.kie.kogito.jobmanagement.dao.Job;
+import org.kie.kogito.jobmanagement.entity.Job;
 
 import javax.enterprise.context.ApplicationScoped;
 

@@ -1,4 +1,4 @@
-package org.kie.kogito.jobmanagement.dao;
+package org.kie.kogito.jobmanagement.dto;
 
 import java.util.Objects;
 
@@ -77,5 +77,16 @@ public class JobDTO {
     @Override
     public int hashCode() {
         return Objects.hash(id, name, location, category, jobSummary);
+    }
+
+    @Override
+    public String toString() {
+        return "JobDTO{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", location='" + location + '\'' +
+                ", category='" + category + '\'' +
+                ", jobSummary='" + jobSummary + '\'' +
+                '}';
     }
 }
