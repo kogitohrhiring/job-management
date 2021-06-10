@@ -1,11 +1,11 @@
 package org.kie.kogito.jobmanagement.service;
 
-import org.kie.kogito.jobmanagement.dto.Job;
+import org.kie.kogito.jobmanagement.entity.Application;
+import org.kie.kogito.jobmanagement.entity.Job;
 
 import java.util.Collection;
-import java.util.List;
 
-public interface JobManagementServiceInterface {
+public interface JobServiceInterface {
 
     Job GetJobById(Long jobId);
 

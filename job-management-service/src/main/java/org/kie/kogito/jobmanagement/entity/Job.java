@@ -1,9 +1,6 @@
-package org.kie.kogito.jobmanagement.dto;
+package org.kie.kogito.jobmanagement.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
@@ -17,12 +14,16 @@ public class Job {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Column(name = "name")
     private String name;
 
+    @Column(name = "location")
     private String location;
 
+    @Column(name = "category")
     private String category;
 
+    @Column(name = "job_summary")
     private String jobSummary;
 
     // ------------------------------------------------------------------------

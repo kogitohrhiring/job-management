@@ -78,4 +78,15 @@ public class JobDTO {
     public int hashCode() {
         return Objects.hash(id, name, location, category, jobSummary);
     }
+
+    @Override
+    public String toString() {
+        return "JobDTO{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", location='" + location + '\'' +
+                ", category='" + category + '\'' +
+                ", jobSummary='" + jobSummary + '\'' +
+                '}';
+    }
 }
