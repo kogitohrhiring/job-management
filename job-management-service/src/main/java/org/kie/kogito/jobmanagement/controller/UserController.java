@@ -2,24 +2,24 @@ package org.kie.kogito.jobmanagement.controller;
 
 import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 import org.kie.kogito.jobmanagement.dto.EducationDTO;
+import org.kie.kogito.jobmanagement.dto.ExperienceDTO;
 import org.kie.kogito.jobmanagement.dto.UserDTO;
 import org.kie.kogito.jobmanagement.mapper.EducationMapper;
+import org.kie.kogito.jobmanagement.mapper.ExperienceMapper;
 import org.kie.kogito.jobmanagement.mapper.UserMapper;
 import org.kie.kogito.jobmanagement.service.UserServiceInterface;
-
 
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import java.util.List;
 
 @Path("/users")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 @RegisterRestClient
-public class UserController implements UserControllerInterface{
+public class UserController implements UserControllerInterface {
 
     @Inject
     UserServiceInterface userService;
@@ -29,6 +29,9 @@ public class UserController implements UserControllerInterface{
 
     @Inject
     EducationMapper educationMapper;
+
+    @Inject
+    ExperienceMapper experienceMapper;
 
     @Override
     public UserDTO FindByUserId(Long userId) {
@@ -56,7 +59,27 @@ public class UserController implements UserControllerInterface{
     }
 
     @Override
+    public void CreateExperience(Long userId, ExperienceDTO experienceDTO) {
+        userService.CreateExperience(userId, experienceMapper.toExperienceEntity(experienceDTO));
+    }
+
+    @Override
+    public void UpdateExperience(Long userId, ExperienceDTO experienceDTO, Long experienceId) {
+        userService.UpdateExperience(userId, experienceMapper.toExperienceEntity(experienceDTO), experienceId);
+    }
+
+    @Override
     public void DeleteUser(Long userId) {
         userService.DeleteUser(userId);
+    }
+
+    @Override
+    public void DeleteExperience(Long experienceId) {
+        userService.DeleteExperience(experienceId);
+    }
+
+    @Override
+    public void DeleteEducation(Long educationId) {
+        userService.DeleteEducation(educationId);
     }
 }

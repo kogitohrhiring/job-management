@@ -6,6 +6,5 @@ import org.kie.kogito.jobmanagement.entity.Experience;
 import javax.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped
-public class ExperienRepository implements PanacheRepository<Experience> {
-
+public class ExperienceRepository implements PanacheRepository<Experience> {
 }

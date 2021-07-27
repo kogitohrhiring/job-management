@@ -1,10 +1,10 @@
 package org.kie.kogito.jobmanagement.service.impl;
 
 import org.kie.kogito.jobmanagement.entity.Education;
+import org.kie.kogito.jobmanagement.entity.Experience;
 import org.kie.kogito.jobmanagement.entity.User;
-import org.kie.kogito.jobmanagement.mapper.EducationMapper;
 import org.kie.kogito.jobmanagement.repository.EducationRepository;
-import org.kie.kogito.jobmanagement.repository.ExperienRepository;
+import org.kie.kogito.jobmanagement.repository.ExperienceRepository;
 import org.kie.kogito.jobmanagement.repository.UserRepository;
 import org.kie.kogito.jobmanagement.service.UserServiceInterface;
 
@@ -19,7 +19,7 @@ public class UserService implements UserServiceInterface {
     UserRepository userRepository;
 
     @Inject
-    ExperienRepository experienRepository;
+    ExperienceRepository experienceRepository;
 
     @Inject
     EducationRepository educationRepository;
@@ -52,25 +52,65 @@ public class UserService implements UserServiceInterface {
     public void UpdateEducation(Long userId, Education education, Long educationId) {
         Education existingEducation = educationRepository.findById(educationId);
         educationRepository.getEntityManager().merge(education);
-        User existingUser=GetUserById(userId);
+        User existingUser = GetUserById(userId);
         existingEducation.setUser(existingUser);
         userRepository.getEntityManager().merge(existingUser);
     }
 
+    @Override
     @Transactional
     public void CreateEducation(Long userId, Education education) {
         education.id = null;
-//        educationRepository.persist(education);
-        User existingUser=GetUserById(userId);
-        education.setUser(existingUser);
-        educationRepository.persist(education);
+        User existingUser = GetUserById(userId);
+        if (existingUser == null) {
+            throw new NotFoundException();
+        }
+        else {
+            existingUser.getEducationSet().add(education);
+        }
     }
 
+    @Override
+    @Transactional
+    public void UpdateExperience(Long userId, Experience experience, Long experienceId) {
+        Experience existingExperience = experienceRepository.findById(experienceId);
+        experienceRepository.getEntityManager().merge(experience);
+        User existingUser = GetUserById(userId);
+        existingExperience.setUser(existingUser);
+        userRepository.getEntityManager().merge(existingUser);
+    }
+
+    @Override
+    @Transactional
+    public void CreateExperience(Long userId, Experience experience) {
+        experience.id = null;
+        User existingUser = GetUserById(userId);
+        if (existingUser == null) {
+            throw new NotFoundException();
+        }
+        else {
+            existingUser.getExperienceSet().add(experience);
+        }
+    }
 
     @Override
     @Transactional
     public void DeleteUser(Long userId) {
         User existingUser = GetUserById(userId);
         userRepository.delete(existingUser);
+    }
+
+    @Override
+    @Transactional
+    public void DeleteExperience(Long experienceId) {
+        Experience existingExperience = experienceRepository.findById(experienceId);
+        experienceRepository.delete(existingExperience);
+    }
+
+    @Override
+    @Transactional
+    public void DeleteEducation(Long educationId) {
+        Education existingEducation = educationRepository.findById(educationId);
+        educationRepository.delete(existingEducation);
     }
 }

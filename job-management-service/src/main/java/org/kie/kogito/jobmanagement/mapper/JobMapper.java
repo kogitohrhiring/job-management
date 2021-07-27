@@ -1,9 +1,7 @@
 package org.kie.kogito.jobmanagement.mapper;
 
-import org.kie.kogito.jobmanagement.entity.Application;
-import org.kie.kogito.jobmanagement.dto.ApplicationDTO;
-import org.kie.kogito.jobmanagement.entity.Job;
 import org.kie.kogito.jobmanagement.dto.JobDTO;
+import org.kie.kogito.jobmanagement.entity.Job;
 import org.mapstruct.Mapper;
 
 import java.util.Collection;

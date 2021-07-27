@@ -2,7 +2,6 @@ package org.kie.kogito.jobmanagement.dto;
 
 import lombok.Data;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
@@ -20,5 +19,5 @@ public class UserDTO {
     private String userSummary;
     private Set<SkillDTO> skillSet;
     private List<EducationDTO> educationSet;
-//    private List<ExperienceDTO> experienceSet;
+    private List<ExperienceDTO> experienceSet;
 }
