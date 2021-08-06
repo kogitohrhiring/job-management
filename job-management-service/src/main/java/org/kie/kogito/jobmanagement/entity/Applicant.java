@@ -8,8 +8,8 @@ import java.util.Set;
 
 @Entity
 @Data
-@Table(name = "users")
-public class User {
+@Table(name = "applicant")
+public class Applicant {
     @Id
     @GeneratedValue
     private Long id;
@@ -21,24 +21,23 @@ public class User {
     private int yoe;
     private String location;
     private String ctc;
-    private String userSummary;
+    private String applicantSummary;
+
     @ManyToMany(fetch = FetchType.EAGER, cascade = {
             CascadeType.PERSIST,
             CascadeType.MERGE
     })
     @JoinTable(name = "skillSet",
-            joinColumns = @JoinColumn(name = "userId", referencedColumnName = "Id"),
-            inverseJoinColumns = @JoinColumn(name = "skillId", referencedColumnName = "Id"))
+            joinColumns = @JoinColumn(name = "applicantId", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "skillId", referencedColumnName = "id"))
     private Set<Skill> skillSet;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "userId", referencedColumnName = "id")
+    @OneToMany(mappedBy = "applicant", cascade = CascadeType.REMOVE)
     private List<Education> educationSet;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "userId", referencedColumnName = "id")
+    @OneToMany(mappedBy = "applicant", cascade = CascadeType.REMOVE)
     private List<Experience> experienceSet;
 
-    public User() {
+    public Applicant() {
     }
 }

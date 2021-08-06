@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 @Data
-public class UserDTO {
+public class ApplicantDTO {
     private Long Id;
     private String name;
     private String role;
@@ -16,7 +16,7 @@ public class UserDTO {
     private int yoe;
     private String location;
     private String ctc;
-    private String userSummary;
+    private String applicantSummary;
     private Set<SkillDTO> skillSet;
     private List<EducationDTO> educationSet;
     private List<ExperienceDTO> experienceSet;
