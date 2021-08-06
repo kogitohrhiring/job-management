@@ -11,6 +11,10 @@ Go to job-management service folder and run:
 
 `mvn quarkus:dev`
 
+Start PostgreSQL:
+
+`sudo service postgresql start`
+
 ### Troubleshooting
 
 - Error: `Connection to localhost:5432 refused. Check that the hostname and port are correct and that the postmaster is accepting TCP/IP connections.`
